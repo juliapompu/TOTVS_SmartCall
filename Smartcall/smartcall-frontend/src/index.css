@@ -1,0 +1,302 @@
+/* ============================================================
+   TOTVS SMARTCALL - DESIGN SYSTEM GLOBAL
+   Tema: Corporativo moderno / Dark-accent com azul TOTVS
+   Fonte: Syne (display) + DM Sans (corpo)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+/* ============================================================
+   VARIÁVEIS DE DESIGN
+   ============================================================ */
+:root {
+  /* Cores principais */
+  --azul-totvs:     #0057FF;
+  --azul-escuro:    #003BBF;
+  --azul-claro:     #4D8BFF;
+  --azul-glow:      rgba(0, 87, 255, 0.15);
+
+  /* Neutros */
+  --bg-page:        #0A0E1A;
+  --bg-card:        #111827;
+  --bg-card-hover:  #1A2438;
+  --bg-surface:     #161D2E;
+  --border:         rgba(255,255,255,0.07);
+  --border-accent:  rgba(0, 87, 255, 0.3);
+
+  /* Texto */
+  --text-primary:   #F0F4FF;
+  --text-secondary: #8A9BBE;
+  --text-muted:     #4A5A78;
+
+  /* Status */
+  --verde:          #00E5A0;
+  --verde-bg:       rgba(0, 229, 160, 0.1);
+  --amarelo:        #FFB800;
+  --amarelo-bg:     rgba(255, 184, 0, 0.1);
+  --vermelho:       #FF4D6A;
+  --vermelho-bg:    rgba(255, 77, 106, 0.1);
+
+  /* Tipografia */
+  --font-display:   'Syne', sans-serif;
+  --font-body:      'DM Sans', sans-serif;
+
+  /* Espaçamentos */
+  --radius-sm:      8px;
+  --radius-md:      12px;
+  --radius-lg:      16px;
+  --radius-xl:      24px;
+
+  /* Sombras */
+  --shadow-card:    0 4px 24px rgba(0,0,0,0.4);
+  --shadow-glow:    0 0 30px rgba(0, 87, 255, 0.2);
+}
+
+/* ============================================================
+   RESET E BASE
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  /* Fundo com textura sutil */
+  background-image:
+    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(0,87,255,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 110%, rgba(0,87,255,0.05) 0%, transparent 60%);
+}
+
+/* ============================================================
+   TIPOGRAFIA
+   ============================================================ */
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.125rem; }
+
+p { color: var(--text-secondary); }
+
+a {
+  color: var(--azul-claro);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover { color: var(--text-primary); }
+
+/* ============================================================
+   SCROLLBAR CUSTOMIZADA
+   ============================================================ */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-page); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--azul-totvs); }
+
+/* ============================================================
+   COMPONENTES REUTILIZÁVEIS
+   ============================================================ */
+
+/* Card base */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-card);
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.card:hover {
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-card), var(--shadow-glow);
+}
+
+/* Badge de status */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: var(--font-display);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.badge-verde    { background: var(--verde-bg);    color: var(--verde); }
+.badge-amarelo  { background: var(--amarelo-bg);  color: var(--amarelo); }
+.badge-vermelho { background: var(--vermelho-bg); color: var(--vermelho); }
+.badge-azul     { background: var(--azul-glow);   color: var(--azul-claro); }
+
+/* Ponto piscando (ao vivo) */
+.dot-live {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--verde);
+  animation: pulse-dot 1.5s infinite;
+  display: inline-block;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.7); }
+}
+
+/* Botão primário */
+.btn-primary {
+  background: var(--azul-totvs);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  letter-spacing: 0.03em;
+}
+.btn-primary:hover {
+  background: var(--azul-escuro);
+  transform: translateY(-1px);
+}
+
+/* Botão secundário */
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-ghost:hover {
+  border-color: var(--azul-totvs);
+  color: var(--text-primary);
+}
+
+/* Seção título */
+.section-title {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+/* Avatar */
+.avatar {
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--bg-surface);
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+}
+
+/* Input de busca */
+.search-input {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  padding: 10px 14px 10px 38px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.search-input:focus { border-color: var(--azul-totvs); }
+.search-input::placeholder { color: var(--text-muted); }
+
+/* Divider */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 16px 0;
+}
+
+/* Sentimento chip */
+.sentimento-positivo { color: var(--verde);   background: var(--verde-bg); }
+.sentimento-neutro   { color: var(--amarelo); background: var(--amarelo-bg); }
+.sentimento-negativo { color: var(--vermelho);background: var(--vermelho-bg); }
+
+/* Animação de entrada */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeInUp 0.4s ease forwards; }
+
+/* Loading skeleton */
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, var(--bg-card) 25%, var(--bg-surface) 50%, var(--bg-card) 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-sm);
+}
+
+/* Layout principal */
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page-content {
+  padding: 28px 32px;
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+  flex: 1;
+}
+
+/* Grid de dashboard */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+/* Grid de clientes */
+.clientes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .dashboard-grid { grid-template-columns: repeat(2, 1fr); }
+  .page-content { padding: 20px 16px; }
+}
+@media (max-width: 640px) {
+  .dashboard-grid { grid-template-columns: 1fr; }
+  .clientes-grid  { grid-template-columns: repeat(2, 1fr); }
+}

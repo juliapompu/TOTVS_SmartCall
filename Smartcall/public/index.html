@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0057FF" />
+    <meta name="description" content="TOTVS SmartCall - Transcrição inteligente de chamadas" />
+    <title>TOTVS SmartCall</title>
+
+    <!-- Preconnect para fontes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <style>
+      /* Evita flash de conteúdo sem estilo */
+      body { background: #0A0E1A; }
+
+      /* Animação do gradiente do header */
+      @keyframes gradientShift {
+        0%   { background-position: 0% 50%; }
+        100% { background-position: 200% 50%; }
+      }
+
+      /* Menu mobile responsivo */
+      @media (max-width: 768px) {
+        .nav-desktop { display: none !important; }
+        .menu-btn    { display: flex !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>Você precisa habilitar JavaScript para usar o TOTVS SmartCall.</noscript>
+    <div id="root"></div>
+  </body>
+</html>
